@@ -1,8 +1,8 @@
 /**
- * ProjectManagementSystem. Module 4. JDBC
+ * Module_7_ORM_Hibernate
  *
  * @autor Valentin Mozul
- * @version of 02.11.2021
+ * @version of 28.12.2021
  */
 
 package ua.goit.dao.to_interface;

@@ -13,6 +13,7 @@ import ua.goit.model.Developers;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.*;
 
 public class DevelopersDao implements Dao<Developers> {
@@ -34,8 +35,8 @@ public class DevelopersDao implements Dao<Developers> {
 
     @Override
     public List<Developers> getAll() {
-        Query getAll = em.createNamedQuery("getAll");
-        return getAll.getResultList();
+        TypedQuery<Developers> query = em.createQuery("from Developers", Developers.class);
+        return query.getResultList();
     }
 
     @Override
