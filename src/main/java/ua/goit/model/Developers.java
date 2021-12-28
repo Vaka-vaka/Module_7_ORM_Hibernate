@@ -1,25 +1,30 @@
 /**
- * ProjectManagementSystem. Module 4. JDBC
+ * Module_7_ORM_Hibernate
  *
  * @autor Valentin Mozul
- * @version of 12.11.2021
+ * @version of 28.12.2021
  */
 
 package ua.goit.model;
 
-import ua.goit.dao.to_interface.Identity;
-
+import javax.persistence.*;
 import java.util.*;
 
-public class Developers implements Identity {
+@Entity
+@Table(name = "developers")
+@NamedQueries({
+        @NamedQuery(name = "getAll", query = "from Developers")
+})
+public class Developers {
 
+    @Id
+    @GeneratedValue(generator = "developers_id_seq")
     private long id;
     private String name_;
     private long age;
     private String gender;
     private int salary;
 
-    @Override
     public Long getId() {
         return id;
     }

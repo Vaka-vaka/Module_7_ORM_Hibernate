@@ -10,7 +10,7 @@ package ua.goit.console.commands;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.goit.console.Command;
-import ua.goit.dao.CustomersDao;
+//import ua.goit.dao.CustomersDao;
 import ua.goit.model.Customers;
 import ua.goit.service.CustomersService;
 

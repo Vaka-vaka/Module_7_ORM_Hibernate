@@ -9,12 +9,12 @@ package ua.goit.dao.to_interface;
 
 import java.util.*;
 
-public interface Dao<T extends Identity> {
+public interface Dao<T> {
     List<T> getAll();
 
     Optional<T> get(long id);
 
-    Optional<T> create(T entity);
+    void create(T entity);
 
     void update(T entity);
 

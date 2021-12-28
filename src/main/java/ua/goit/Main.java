@@ -1,4 +1,4 @@
-package ua.Goit;
+package ua.goit;
 
 /**
  * Hello world!

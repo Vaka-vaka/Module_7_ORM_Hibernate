@@ -19,7 +19,7 @@ public class LoadListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        DbMigration.migrate();
+     //   DbMigration.migrate();
         ServletContext servletContext = sce.getServletContext();
         servletContext.setAttribute("developersService", DevelopersService.getInstance());
         servletContext.setAttribute("skillsService", SkillsService.getInstance());
