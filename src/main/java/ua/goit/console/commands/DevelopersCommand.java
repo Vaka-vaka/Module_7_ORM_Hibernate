@@ -72,15 +72,6 @@ public class DevelopersCommand implements Command {
     }
 
     private void create(String params) {
-        /** без ID не виходить, кидає помилку сама база SQL
-         * (Error [23505]: ПОМИЛКА: повторювані значення ключа порушують обмеження унікальності "developers_pkey"
-         *  Подробности: Ключ (id)=(1) вже існує.
-         *  ПОМИЛКА: повторювані значення ключа порушують обмеження унікальності "developers_pkey"
-         *  Подробности: Ключ (id)=(1) вже існує.
-         *  ПОМИЛКА: повторювані значення ключа порушують обмеження унікальності "developers_pkey"
-         *  Подробности: Ключ (id)=(1) вже існує.)
-         *автоматично не може призначить ID
-         */
         String[] paramsArray = params.split(" ");
         Developers developers = new Developers();
         developers.setId(Long.parseLong(paramsArray[0]));

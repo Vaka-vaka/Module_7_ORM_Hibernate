@@ -22,15 +22,15 @@ public class LoadListener implements ServletContextListener {
      //   DbMigration.migrate();
         ServletContext servletContext = sce.getServletContext();
         servletContext.setAttribute("developersService", DevelopersService.getInstance());
-        servletContext.setAttribute("skillsService", SkillsService.getInstance());
-        servletContext.setAttribute("projectsService", ProjectsService.getInstance());
-        servletContext.setAttribute("companiesService", CompaniesService.getInstance());
-        servletContext.setAttribute("customersService", CustomersService.getInstance());
-        servletContext.setAttribute("salaryService", SalaryService.getInstance());
-        servletContext.setAttribute("developersIndividualProjectService",
-                DevelopersIndividualProjectService.getInstance());
-        servletContext.setAttribute("javaDevelopersService", JavaDevelopersService.getInstance());
-        servletContext.setAttribute("middleDevelopersService", MiddleDevelopersService.getInstance());
-        servletContext.setAttribute("listProjectsService", ListProjectsService.getInstance());
+//        servletContext.setAttribute("skillsService", SkillsService.getInstance());
+//        servletContext.setAttribute("projectsService", ProjectsService.getInstance());
+//        servletContext.setAttribute("companiesService", CompaniesService.getInstance());
+//        servletContext.setAttribute("customersService", CustomersService.getInstance());
+//        servletContext.setAttribute("salaryService", SalaryService.getInstance());
+//        servletContext.setAttribute("developersIndividualProjectService",
+//                DevelopersIndividualProjectService.getInstance());
+//        servletContext.setAttribute("javaDevelopersService", JavaDevelopersService.getInstance());
+//        servletContext.setAttribute("middleDevelopersService", MiddleDevelopersService.getInstance());
+//        servletContext.setAttribute("listProjectsService", ListProjectsService.getInstance());
     }
 }

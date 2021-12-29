@@ -12,9 +12,9 @@ import java.util.*;
 
 @Entity
 @Table(name = "developers")
-@NamedQueries({
-        @NamedQuery(name = "getAll", query = "from Developers")
-})
+//@NamedQueries({
+//        @NamedQuery(name = "getAll", query = "from Developers")
+//})
 public class Developers {
 
     @Id

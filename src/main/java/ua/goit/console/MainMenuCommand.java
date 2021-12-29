@@ -24,11 +24,11 @@ public class MainMenuCommand implements Command {
 
     public MainMenuCommand() {
         commandMap.put("developers", new DevelopersCommand());
-        commandMap.put("skills", new SkillsCommand());
-        commandMap.put("projects", new ProjectsCommand());
-        commandMap.put("companies", new CompaniesCommand());
-        commandMap.put("customers", new CustomersCommand());
-        commandMap.put("home_work", new HomeWork());
+//        commandMap.put("skills", new SkillsCommand());
+//        commandMap.put("projects", new ProjectsCommand());
+//        commandMap.put("companies", new CompaniesCommand());
+//        commandMap.put("customers", new CustomersCommand());
+//        commandMap.put("home_work", new HomeWork());
     }
 
     @Override

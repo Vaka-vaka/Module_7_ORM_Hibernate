@@ -8,15 +8,13 @@
 package ua.goit.dao;
 
 import ua.goit.config.PersistenceProvider;
-import ua.goit.dao.to_interface.Dao;
 import ua.goit.model.Developers;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.*;
 
-public class DevelopersDao implements Dao<Developers> {
+public class DevelopersDao extends AbstractDao<Developers> {
 
     protected EntityManager em = PersistenceProvider.getEntityManager();
 
@@ -32,7 +30,6 @@ public class DevelopersDao implements Dao<Developers> {
         return instance;
     }
 
-
     @Override
     public List<Developers> getAll() {
         TypedQuery<Developers> query = em.createQuery("from Developers", Developers.class);
@@ -45,24 +42,4 @@ public class DevelopersDao implements Dao<Developers> {
         return Optional.of(developers);
     }
 
-    @Override
-    public void create(Developers entity) {
-       em.getTransaction().begin();
-       em.persist(entity);
-       em.getTransaction().commit();
-    }
-
-    @Override
-    public void update(Developers entity) {
-        em.getTransaction().begin();
-        em.merge(entity);
-        em.getTransaction().commit();
-    }
-
-    @Override
-    public void delete(Developers entity) {
-        em.getTransaction().begin();
-        em.remove(entity);
-        em.getTransaction().commit();
-    }
 }

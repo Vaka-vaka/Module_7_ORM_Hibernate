@@ -11,21 +11,10 @@ import ua.goit.config.PersistenceProvider;
 import ua.goit.dao.to_interface.Dao;
 
 import javax.persistence.EntityManager;
-import java.util.*;
 
-public class AbstractDao<T> implements Dao<T> {
+abstract public class AbstractDao<T> implements Dao<T> {
 
     protected EntityManager em = PersistenceProvider.getEntityManager();
-
-    @Override
-    public List<T> getAll() {
-        return null;
-    }
-
-    @Override
-    public Optional<T> get(long id) {
-        return Optional.empty();
-    }
 
     @Override
     public void create(T entity) {
