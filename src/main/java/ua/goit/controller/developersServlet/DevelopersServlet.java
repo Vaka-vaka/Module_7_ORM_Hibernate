@@ -34,9 +34,8 @@ public class DevelopersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String deleteId = req.getParameter("deleteId");
         if (deleteId != null) {
-            Developers developers = new Developers();
-            developers.setId(Long.parseLong(deleteId));
-            service.delete(developers);
+            Optional<Developers> developers = service.get(Long.parseLong(deleteId));
+            developers.ifPresent(developers1 -> service.delete(developers1));
             resp.sendRedirect("/developersJSP");
         } else {
             List<Developers> all = service.getAll();
@@ -44,17 +43,14 @@ public class DevelopersServlet extends HttpServlet {
             req.setAttribute("developersJSP", developersJSP);
             req.getRequestDispatcher("/jsp/developersJSP.jsp").forward(req, resp);
         }
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Optional<Developers> modelFromStream = HandleBodyUtil.
-                getModelFromStream(req.getInputStream(), Developers.class);
-        System.out.println("Developers INS = " + modelFromStream);
+        Optional<Developers> modelFromStream = HandleBodyUtil
+                .getModelFromStream(req.getInputStream(), Developers.class);
         modelFromStream.ifPresent(developers ->
                 service.create(developers));
-        System.out.println("Created developers with status code:" + resp.getStatus());
         resp.sendRedirect("/developersJSP");
     }
 }

@@ -30,7 +30,7 @@
             <div class="mb-3">
                 <label for="id" class="form-label">ID</label>
                 <input type="text" class="form-control"
-                value = "<%= skills.getId() == 0 ? "" : skills.getId() %>"
+                value = "<%= skills.getId() == null ? "" : skills.getId() %>"
                        id="id" placeholder="id">
             </div>
             <div class="mb-3">
@@ -70,7 +70,7 @@
         level_skills: level_skills.value,
    }
 
-<% if(skills.getId() == 0) {%>
+<% if(skills.getId() == null) {%>
          let url = '/skillsJSP';
          let method = 'POST';
       <% } else { %>

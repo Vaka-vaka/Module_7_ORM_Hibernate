@@ -27,7 +27,6 @@ public class ViewDevelopersServlet extends HttpServlet {
 
     private DevelopersService service;
 
-    public static final Logger LOGGER = LogManager.getLogger(ViewDevelopersServlet.class);
     protected Gson jsonParser = new Gson();
 
     @Override

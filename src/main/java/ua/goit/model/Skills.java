@@ -1,27 +1,40 @@
 /**
- * ProjectManagementSystem. Module 4. JDBC
+ * Module_7_ORM_Hibernate
  *
  * @autor Valentin Mozul
- * @version of 13.11.2021
+ * @version of 30.12.2021
  */
 
 package ua.goit.model;
 
-import ua.goit.dao.to_interface.Identity;
-
+import javax.persistence.*;
 import java.util.*;
 
-public class Skills implements Identity {
+@Entity
+@Table(name = "skills")
+public class Skills {
 
-    private long id;
+    @Id
+    @GeneratedValue(generator = "skills_id_seq")
+    private Long id;
+    @Column(name = "language")
     private String language;
+    @Column(name = "level_skills")
     private String level_skills;
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "developers_skills",
+            joinColumns = { @JoinColumn(name = "skills_id") },
+            inverseJoinColumns = { @JoinColumn(name = "dev_id") }
+    )
+    private List<Developers> developers = new ArrayList<>();
 
     public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,19 +54,12 @@ public class Skills implements Identity {
         this.level_skills = level_skills;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Skills skills = (Skills) o;
-        return Objects.equals(id, skills.id)
-                && Objects.equals(language, skills.language)
-                && Objects.equals(level_skills, skills.level_skills);
+    public List<Developers> getDevelopers() {
+        return developers;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, language, level_skills);
+    public void setDevelopers(List<Developers> developers) {
+        this.developers = developers;
     }
 
     @Override
@@ -62,6 +68,7 @@ public class Skills implements Identity {
                 "id=" + id +
                 ", language='" + language + '\'' +
                 ", level_skills='" + level_skills + '\'' +
+                ", developers=" + developers +
                 '}';
     }
 }
