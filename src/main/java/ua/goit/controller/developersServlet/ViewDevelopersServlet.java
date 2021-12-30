@@ -55,17 +55,11 @@ public class ViewDevelopersServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-//      HandleBodyUtil.getModelFromStream(req.getInputStream(), Developers.class)
-//                      .ifPresent(developers -> {
-//                          service.update(developers);
-//                      });
-//        resp.sendRedirect("/developersJSP");
-        Optional<Developers> modelFromStream = HandleBodyUtil.
-                getModelFromStream(req.getInputStream(), Developers.class);
-        System.out.println("Developer INS = " + modelFromStream);
-        modelFromStream.ifPresent(developers ->
-                service.create(developers));
-        System.out.println("Created developer with status code:" + resp.getStatus());
+      HandleBodyUtil.getModelFromStream(req.getInputStream(), Developers.class)
+                      .ifPresent(developers -> {
+                          service.update(developers);
+                      });
         resp.sendRedirect("/developersJSP");
+
     }
 }

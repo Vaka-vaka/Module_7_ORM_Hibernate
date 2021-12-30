@@ -16,7 +16,7 @@ public class Developers {
     @Id
     @GeneratedValue(generator = "developers_id_seq")
     private long id;
-    @Column(name = "name_")
+    @Column(name = "name")
     private String name_;
     @Column(name = "age")
     private long age;

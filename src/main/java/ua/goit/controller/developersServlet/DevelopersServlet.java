@@ -17,7 +17,6 @@ import ua.goit.service.DevelopersService;
 import ua.goit.service.HandleBodyUtil;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,40 +32,29 @@ public class DevelopersServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String deleteId = req.getParameter("deleteId");
-//        if (deleteId != null) {
-//            Developers developers = new Developers();
-//            developers.setId(Long.parseLong(deleteId));
-//            service.delete(developers);
-//            resp.sendRedirect("/developersJSP");
-//        } else {
-//            List<Developers> all = service.getAll();
-//            Object[] developersJSP = all.toArray();
-//            req.setAttribute("developersJSP", developersJSP);
-//            req.getRequestDispatcher("/jsp/developersJSP.jsp").forward(req, resp);
-//        }
         String deleteId = req.getParameter("deleteId");
         if (deleteId != null) {
-            Optional<Developers> developer = service.get(Long.parseLong(deleteId));
-            developer.ifPresent(d -> service.delete(d));
+            Developers developers = new Developers();
+            developers.setId(Long.parseLong(deleteId));
+            service.delete(developers);
             resp.sendRedirect("/developersJSP");
         } else {
-            List<Developers> all = null;
-            try {
-                all = service.getAll();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            req.setAttribute("developers", all);
-            req.setCharacterEncoding("UTF-8");
-            req.getRequestDispatcher("/jsp/developers.jsp").forward(req, resp);
+            List<Developers> all = service.getAll();
+            Object[] developersJSP = all.toArray();
+            req.setAttribute("developersJSP", developersJSP);
+            req.getRequestDispatcher("/jsp/developersJSP.jsp").forward(req, resp);
         }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Optional<Developers> modelFromStream = HandleBodyUtil.getModelFromStream(req.getInputStream(), Developers.class);
-        modelFromStream.ifPresent(developers -> service.create(developers));
+        Optional<Developers> modelFromStream = HandleBodyUtil.
+                getModelFromStream(req.getInputStream(), Developers.class);
+        System.out.println("Developers INS = " + modelFromStream);
+        modelFromStream.ifPresent(developers ->
+                service.create(developers));
+        System.out.println("Created developers with status code:" + resp.getStatus());
         resp.sendRedirect("/developersJSP");
     }
 }

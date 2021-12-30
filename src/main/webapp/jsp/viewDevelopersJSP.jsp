@@ -30,7 +30,7 @@
             <div class="mb-3">
                 <label for="id" class="form-label">ID</label>
                 <input type="text" class="form-control"
-                value = "<%= developers.getId() == null ? "" : developers.getId() %>"
+                value = "<%= developers.getId() == 0 ? "" : developers.getId() %>"
                        id="id" placeholder="id">
             </div>
             <div class="mb-3">
@@ -75,7 +75,7 @@
 
     function save() {
     let body = {
-    <% if(developers.getId() != null) {%>
+    <% if(developers.getId() != 0) {%>
              id: id.value,
           <% } %>
 
