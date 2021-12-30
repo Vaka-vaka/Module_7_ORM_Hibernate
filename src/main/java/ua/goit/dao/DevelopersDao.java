@@ -7,20 +7,14 @@
 
 package ua.goit.dao;
 
-import ua.goit.config.PersistenceProvider;
 import ua.goit.model.Developers;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import java.util.*;
-
 public class DevelopersDao extends AbstractDao<Developers> {
-
-    protected EntityManager em = PersistenceProvider.getEntityManager();
 
     private static DevelopersDao  instance;
 
     private DevelopersDao() {
+        super(Developers.class);
     }
 
     public static DevelopersDao getInstance() {
@@ -28,18 +22,6 @@ public class DevelopersDao extends AbstractDao<Developers> {
             instance = new DevelopersDao();
         }
         return instance;
-    }
-
-    @Override
-    public List<Developers> getAll() {
-        TypedQuery<Developers> query = em.createQuery("from Developers", Developers.class);
-        return query.getResultList();
-    }
-
-    @Override
-    public Optional<Developers> get(long id) {
-        Developers developers = em.find(Developers.class, id);
-        return Optional.of(developers);
     }
 
 }

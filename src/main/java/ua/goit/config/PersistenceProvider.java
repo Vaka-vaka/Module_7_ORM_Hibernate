@@ -6,8 +6,17 @@ import javax.persistence.Persistence;
 
 public class PersistenceProvider {
 
-       private static EntityManagerFactory emf = Persistence.createEntityManagerFactory(
-               "Module_7ORM_Hibernate");
+       private static final EntityManagerFactory emf;
+       static {
+              try {
+                     emf = Persistence
+                             .createEntityManagerFactory("Module_7ORM_Hibernate");
+
+              } catch (Throwable t) {
+                     t.printStackTrace();
+                     throw t;
+              }
+       }
 
        public  static EntityManager getEntityManager() {
               return  emf.createEntityManager();

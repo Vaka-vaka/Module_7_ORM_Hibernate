@@ -1,8 +1,8 @@
 /**
- * Module 6. Servlets
+ * Module_7_ORM_Hibernate
  *
  * @autor Valentin Mozul
- * @version of 14.12.2021
+ * @version of 29.12.2021
  */
 
 package ua.goit.service;

@@ -8,21 +8,21 @@
 package ua.goit.model;
 
 import javax.persistence.*;
-import java.util.*;
 
 @Entity
 @Table(name = "developers")
-//@NamedQueries({
-//        @NamedQuery(name = "getAll", query = "from Developers")
-//})
 public class Developers {
 
     @Id
     @GeneratedValue(generator = "developers_id_seq")
     private long id;
+    @Column(name = "name_")
     private String name_;
+    @Column(name = "age")
     private long age;
+    @Column(name = "gender")
     private String gender;
+    @Column(name = "salary")
     private int salary;
 
     public Long getId() {
@@ -63,19 +63,6 @@ public class Developers {
 
     public void setSalary(int salary) {
         this.salary = salary;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Developers that = (Developers) o;
-        return id == that.id && age == that.age && salary == that.salary && Objects.equals(name_, that.name_) && Objects.equals(gender, that.gender);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name_, age, gender, salary);
     }
 
     @Override
