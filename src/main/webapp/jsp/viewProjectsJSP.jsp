@@ -1,8 +1,8 @@
 <%--
- Module 6. Servlets
+  Module_7_ORM_Hibernate
 
- @autor Valentin Mozul
- @version of 24.12.2021
+  @autor Valentin Mozul
+  @version of 30.12.2021
  --%>
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@
             <div class="mb-3">
                 <label for="id" class="form-label">ID</label>
                 <input type="text" class="form-control"
-                value = "<%= projects.getId() == 0 ? "" : projects.getId() %>"
+                value = "<%= projects.getId() == null ? "" : projects.getId() %>"
                        id="id" placeholder="id">
             </div>
             <div class="mb-3">
@@ -89,7 +89,7 @@
         creation_date: creation_date.value,
    }
 
-<% if(projects.getId() == 0) {%>
+<% if(projects.getId() == null) {%>
          let url = '/projectsJSP';
          let method = 'POST';
       <% } else { %>

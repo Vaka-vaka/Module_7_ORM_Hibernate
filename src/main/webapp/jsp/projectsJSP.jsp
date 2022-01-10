@@ -1,8 +1,8 @@
 <%--
- Module 6. Servlets
+  Module_7_ORM_Hibernate
 
- @autor Valentin Mozul
- @version of 24.12.2021
+  @autor Valentin Mozul
+  @version of 30.12.2021
  --%>
 
 <!DOCTYPE html>

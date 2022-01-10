@@ -1,29 +1,53 @@
 /**
- * ProjectManagementSystem. Module 4. JDBC
+ * Module_7_ORM_Hibernate
  *
  * @autor Valentin Mozul
- * @version of 13.11.2021
+ * @version of 30.12.2021
  */
 
 package ua.goit.model;
 
+import com.google.gson.annotations.SerializedName;
 import ua.goit.dao.to_interface.Identity;
+
+import javax.persistence.*;
 import java.util.*;
 
+@Entity
+@Table(name = "projects")
 public class Projects implements Identity {
 
-    private long id;
+    @Id
+    @GeneratedValue(generator = "projects_id_seq")
+    @SerializedName("id")
+    private Long id;
+    @Column(name = "name_")
+    @SerializedName("name_")
     private String name_;
+    @Column(name = "language")
+    @SerializedName("language")
     private String language;
+    @Column(name = "cost")
+    @SerializedName("cost")
     private int cost;
+//    @Temporal(TemporalType.DATE)
+    @Column(name = "creation_date")
+    @SerializedName("creation_date")
     private String creation_date;
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "developers_projects",
+            joinColumns = { @JoinColumn(name = "projects_id") },
+            inverseJoinColumns = { @JoinColumn(name = "dev_id") }
+    )
+    private List<Developers> developers = new ArrayList<>();
 
-    @Override
     public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,17 +83,12 @@ public class Projects implements Identity {
         this.creation_date = creation_date;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Projects projects = (Projects) o;
-        return id == projects.id && cost == projects.cost && Objects.equals(name_, projects.name_) && Objects.equals(language, projects.language) && Objects.equals(creation_date, projects.creation_date);
+    public List<Developers> getDevelopers() {
+        return developers;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name_, language, cost, creation_date);
+    public void setDevelopers(List<Developers> developers) {
+        this.developers = developers;
     }
 
     @Override
@@ -79,7 +98,8 @@ public class Projects implements Identity {
                 ", name_='" + name_ + '\'' +
                 ", language='" + language + '\'' +
                 ", cost=" + cost +
-                ", creation_date=" + creation_date +
+                ", creation_date='" + creation_date + '\'' +
+                ", developers=" + developers +
                 '}';
     }
 }
