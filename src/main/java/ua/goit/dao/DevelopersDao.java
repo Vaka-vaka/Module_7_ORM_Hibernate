@@ -8,7 +8,6 @@
 package ua.goit.dao;
 
 import ua.goit.model.Developers;
-import ua.goit.model.Projects;
 
 public class DevelopersDao extends AbstractDao<Developers> {
 

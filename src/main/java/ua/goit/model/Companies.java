@@ -1,19 +1,30 @@
 /**
- * ProjectManagementSystem. Module 4. JDBC
+ * Module_7_ORM_Hibernate
  *
  * @autor Valentin Mozul
- * @version of 13.11.2021
+ * @version of 10.01.2022
  */
 
 package ua.goit.model;
 
-import ua.goit.dao.to_interface.Identity;
-import java.util.Objects;
+import javax.persistence.*;
 
+import com.google.gson.annotations.SerializedName;
+import ua.goit.dao.to_interface.Identity;
+
+@Entity
+@Table(name = "companies")
 public class Companies implements Identity {
 
+    @Id
+    @GeneratedValue(generator = "companies_id_seq")
+    @SerializedName("id")
     private long id;
+    @Column(name = "name_")
+    @SerializedName("name_")
     private String name_;
+    @Column(name = "city")
+    @SerializedName("city")
     private String city;
 
     @Override
@@ -39,21 +50,6 @@ public class Companies implements Identity {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Companies companies = (Companies) o;
-        return Objects.equals(id, companies.id) &&
-                Objects.equals(name_, companies.name_)
-                && Objects.equals(city, companies.city);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name_, city);
     }
 
     @Override

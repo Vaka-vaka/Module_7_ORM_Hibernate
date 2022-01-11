@@ -11,7 +11,10 @@ import com.google.gson.annotations.SerializedName;
 import ua.goit.dao.to_interface.Identity;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 
 @Entity
 @Table(name = "projects")
@@ -30,10 +33,10 @@ public class Projects implements Identity {
     @Column(name = "cost")
     @SerializedName("cost")
     private int cost;
-//    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     @Column(name = "creation_date")
     @SerializedName("creation_date")
-    private String creation_date;
+    private Date creation_date;
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             fetch = FetchType.EAGER)
     @JoinTable(
@@ -75,11 +78,11 @@ public class Projects implements Identity {
         this.cost = cost;
     }
 
-    public String getCreation_date() {
+    public Date getCreation_date() {
         return creation_date;
     }
 
-    public void setCreation_date(String creation_date) {
+    public void setCreation_date(Date creation_date) {
         this.creation_date = creation_date;
     }
 
