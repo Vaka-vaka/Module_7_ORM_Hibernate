@@ -12,9 +12,7 @@ import com.google.gson.GsonBuilder;
 
 public interface Identity {
 
-    Long getId();
-
-    default Gson jsonObjectString() {
+    default Gson jsonObject() {
         GsonBuilder builder = new GsonBuilder();
         builder.setDateFormat("yyyy-MM-dd");
         return builder.create();
