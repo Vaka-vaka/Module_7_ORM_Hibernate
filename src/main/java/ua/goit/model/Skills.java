@@ -7,12 +7,16 @@
 
 package ua.goit.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import ua.goit.dao.to_interface.Identity;
+
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
 @Table(name = "skills")
-public class Skills {
+public class Skills implements Identity {
 
     @Id
     @GeneratedValue(generator = "skills_id_seq")
@@ -23,6 +27,7 @@ public class Skills {
     private String level_skills;
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     @JoinTable(
             name = "developers_skills",
             joinColumns = { @JoinColumn(name = "skills_id") },
@@ -64,11 +69,6 @@ public class Skills {
 
     @Override
     public String toString() {
-        return "Skills{" +
-                "id=" + id +
-                ", language='" + language + '\'' +
-                ", level_skills='" + level_skills + '\'' +
-                ", developers=" + developers +
-                '}';
+        return jsonObject().toJson(this);
     }
 }

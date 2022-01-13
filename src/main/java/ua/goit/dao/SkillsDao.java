@@ -7,6 +7,7 @@
 
 package ua.goit.dao;
 
+import ua.goit.model.Developers;
 import ua.goit.model.Skills;
 
 public class SkillsDao extends AbstractDao<Skills> {
@@ -21,6 +22,19 @@ public class SkillsDao extends AbstractDao<Skills> {
             instance = new SkillsDao();
         }
         return instance;
+    }
+
+    @Override
+    public void delete(Skills entity) {
+        entity = em.merge(entity);
+        em.getTransaction().begin();
+        for (Developers developer : entity.getDevelopers()) {
+            if (!developer.getSkills().isEmpty()) {
+                developer.getSkills().remove(entity);
+            }
+        }
+        em.remove(entity);
+        em.getTransaction().commit();
     }
 
 }

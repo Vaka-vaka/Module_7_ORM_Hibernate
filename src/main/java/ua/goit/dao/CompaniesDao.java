@@ -8,6 +8,8 @@
 package ua.goit.dao;
 
 import ua.goit.model.Companies;
+import ua.goit.model.Developers;
+import ua.goit.model.Projects;
 
 public class CompaniesDao extends AbstractDao<Companies>{
 
@@ -23,5 +25,6 @@ public class CompaniesDao extends AbstractDao<Companies>{
         }
         return instance;
     }
+
 
 }

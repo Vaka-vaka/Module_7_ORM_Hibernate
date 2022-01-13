@@ -7,11 +7,24 @@
 
 package ua.goit.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import ua.goit.dao.to_interface.Identity;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "developers")
-public class Developers {
+//@NamedQueries({
+//        @NamedQuery(name = "getAll", query = "from Developers"),
+//        @NamedQuery(name = "getDevelopersOfIndustry", query = "select d from Developers d join d.skills s where s.industry = :industry"),
+//        @NamedQuery(name = "getDevelopersOfLevel", query = "select d from Developers d join d.skills s where s.level = :level")
+//})
+public class Developers implements Identity {
 
     @Id
     @GeneratedValue(generator = "developers_id_seq")
@@ -25,11 +38,32 @@ public class Developers {
     @Column(name = "salary")
     private int salary;
 
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.ALL, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable(
+            name = "developers_skills",
+            joinColumns = { @JoinColumn(name = "dev_id") },
+            inverseJoinColumns = { @JoinColumn(name = "skills_id") }
+    )
+    private List<Skills> skills = new ArrayList<>();
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.ALL, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable(
+            name = "developers_projects",
+            joinColumns = { @JoinColumn(name = "dev_id") },
+            inverseJoinColumns = { @JoinColumn(name = "projects_id") }
+    )
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private transient List<Projects> projects = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -65,14 +99,24 @@ public class Developers {
         this.salary = salary;
     }
 
+    public List<Skills> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skills> skills) {
+        this.skills = skills;
+    }
+
+    public List<Projects> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Projects> projects) {
+        this.projects = projects;
+    }
+
     @Override
     public String toString() {
-        return "Developers{" +
-                "id=" + id +
-                ", name_='" + name_ + '\'' +
-                ", Age=" + age +
-                ", Gender='" + gender + '\'' +
-                ", Salary=" + salary +
-                '}';
+        return jsonObject().toJson(this);
     }
 }
