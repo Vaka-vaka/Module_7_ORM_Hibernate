@@ -19,11 +19,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "developers")
-//@NamedQueries({
-//        @NamedQuery(name = "getAll", query = "from Developers"),
-//        @NamedQuery(name = "getDevelopersOfIndustry", query = "select d from Developers d join d.skills s where s.industry = :industry"),
-//        @NamedQuery(name = "getDevelopersOfLevel", query = "select d from Developers d join d.skills s where s.level = :level")
-//})
+@NamedQueries({
+        @NamedQuery(name = "getAll", query = "from Developers"),
+        @NamedQuery(name = "getDevelopersOfIndustry", query = "select d from Developers d join d.skills s where s.language = :language"),
+        @NamedQuery(name = "getDevelopersOfLevel", query = "select d from Developers d join d.skills s where s.level_skills = :level_skills")
+})
 public class Developers implements Identity {
 
     @Id

@@ -12,6 +12,7 @@ import ua.goit.model.Projects;
 
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class ProjectsService {
@@ -49,4 +50,9 @@ public class ProjectsService {
     public void delete(Projects projects) {
         projectsDao.delete(projects);
     }
+
+    public Map<String, Double> getSumProjectSalary(String projectName) {
+        return projectsDao.getSumProjectSalary(projectName);
+    }
+
 }

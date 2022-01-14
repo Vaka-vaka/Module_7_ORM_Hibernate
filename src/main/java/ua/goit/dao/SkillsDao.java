@@ -15,6 +15,7 @@ public class SkillsDao extends AbstractDao<Skills> {
     private static SkillsDao  instance;
 
     private SkillsDao() {
+        super(Skills.class);
     }
 
     public static SkillsDao getInstance() {

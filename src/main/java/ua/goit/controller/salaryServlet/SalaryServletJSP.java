@@ -12,33 +12,33 @@
 //import jakarta.servlet.http.HttpServlet;
 //import jakarta.servlet.http.HttpServletRequest;
 //import jakarta.servlet.http.HttpServletResponse;
-//import ua.goit.model.Salary;
-//import ua.goit.service.SalaryService;
+//import ua.goit.service.ProjectsService;
 //
 //import java.io.IOException;
-//import java.util.List;
-//
+//import java.util.HashMap;
+//import java.util.Map;
 //
 //@WebServlet("/salaryJSP")
 //public class SalaryServletJSP extends HttpServlet {
 //
-//    private SalaryService service;
+//    private ProjectsService service;
+//    private Map<String, Double> salary = new HashMap<>();
 //
 //    @Override
 //    public void init() {
-//        this.service = (SalaryService) getServletContext()
-//                .getAttribute("salaryService");
+//        this.service = (ProjectsService) getServletContext()
+//                .getAttribute("projectsService");
 //    }
 //
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//            List<Salary> all = service.getAll();
-//            Object[] salaryJSP = all.toArray();
-//            req.setAttribute("salaryJSP", salaryJSP);
-//            req.getRequestDispatcher("/jsp/salaryJSP.jsp").forward(req, resp);
-//    }
+////    @Override
+////    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+////            List<Salary> all = service.getAll();
+////            Object[] salaryJSP = all.toArray();
+////            req.setAttribute("salaryJSP", salaryJSP);
+////            req.getRequestDispatcher("/jsp/salaryJSP.jsp").forward(req, resp);
+////    }
 //
 //}
 //
 //
-//
+
