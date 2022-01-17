@@ -7,12 +7,11 @@
 
 package ua.goit.controller;
 
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 import ua.goit.service.*;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
 
 @WebListener
 public class LoadListener implements ServletContextListener {
@@ -23,11 +22,11 @@ public class LoadListener implements ServletContextListener {
      //   DbMigration.migrate();
         ServletContext servletContext = sce.getServletContext();
         servletContext.setAttribute("developersService", DevelopersService.getInstance());
-        servletContext.setAttribute("skillsService", SkillsService.getInstance());
-        servletContext.setAttribute("projectsService", ProjectsService.getInstance());
-        servletContext.setAttribute("companiesService", CompaniesService.getInstance());
-        servletContext.setAttribute("customersService", CustomersService.getInstance());
-        servletContext.setAttribute("skillDao", SkillsService.getInstance());
+//        servletContext.setAttribute("skillsService", SkillsService.getInstance());
+//        servletContext.setAttribute("projectsService", ProjectsService.getInstance());
+//        servletContext.setAttribute("companiesService", CompaniesService.getInstance());
+//        servletContext.setAttribute("customersService", CustomersService.getInstance());
+//        servletContext.setAttribute("skillDao", SkillsService.getInstance());
 //        servletContext.setAttribute("salaryService", SalaryService.getInstance());
 //        servletContext.setAttribute("developersIndividualProjectService",
 //                DevelopersIndividualProjectService.getInstance());
