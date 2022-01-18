@@ -30,7 +30,7 @@
             <div class="mb-3">
                 <label for="id" class="form-label">ID</label>
                 <input type="text" class="form-control"
-                value = "<%= companies.getId() == 0 ? "" : companies.getId() %>"
+                value = "<%= companies.getId() == null ? "" : companies.getId() %>"
                        id="id" placeholder="id">
             </div>
             <div class="mb-3">
@@ -70,7 +70,7 @@
              city: city.value,
 
    }
-<% if(companies.getId() == 0) {%>
+<% if(companies.getId() == null) {%>
          let url = '/companiesJSP';
          let method = 'POST';
       <% } else { %>

@@ -43,7 +43,7 @@ public class Projects implements Identity {
     @Temporal(TemporalType.DATE)
     @Column(name = "creation_date")
     @SerializedName("creation_date")
-    private Date creation_date;
+    private java.util.Date creation_date;
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             fetch = FetchType.EAGER)

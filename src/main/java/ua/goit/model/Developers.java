@@ -20,15 +20,18 @@ import java.util.List;
 @Entity
 @Table(name = "developers")
 @NamedQueries({
-        @NamedQuery(name = "getAll", query = "from Developers"),
-        @NamedQuery(name = "getDevelopersOfIndustry", query = "select d from Developers d join d.skills s where s.language = :language"),
-        @NamedQuery(name = "getDevelopersOfLevel", query = "select d from Developers d join d.skills s where s.level_skills = :level_skills")
+        @NamedQuery(name = "getAll", query = "from developers"),
+        @NamedQuery(name = "getDevelopersOfIndustry", query =
+                "select d from developers d join d.skills s where s.language = :language"),
+        @NamedQuery(name = "getDevelopersOfLevel", query =
+                "select d from Developers d join d.skills s where s.level_skills = :level_skills")
 })
 public class Developers implements Identity {
 
     @Id
     @GeneratedValue(generator = "developers_id_seq")
-    private Long id;
+    @Column(name = "id")
+    private long id;
     @Column(name = "name_")
     private String name_;
     @Column(name = "age")
