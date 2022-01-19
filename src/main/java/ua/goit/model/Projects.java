@@ -41,37 +41,37 @@ public class Projects implements Identity {
     @SerializedName("creation_date")
     private Date creation_date;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE},
             fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Fetch(value = FetchMode.SUBSELECT)
     @JoinTable(
             name = "developers_projects",
             joinColumns = { @JoinColumn(name = "projects_id") },
             inverseJoinColumns = { @JoinColumn(name = "dev_id") }
     )
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<Developers> developers;
+       private List<Developers> developers;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE},
             fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Fetch(value = FetchMode.SUBSELECT)
     @JoinTable(
             name = "customers_projects",
             joinColumns = { @JoinColumn(name = "projects_id") },
             inverseJoinColumns = { @JoinColumn(name = "customers_id") }
     )
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Customers> customers;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE},
             fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Fetch(value = FetchMode.SUBSELECT)
     @JoinTable(
             name = "companies_projects",
             joinColumns = { @JoinColumn(name = "projects_id") },
             inverseJoinColumns = { @JoinColumn(name = "companies_id") }
     )
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Companies> companies;
 
     public Long getId() {

@@ -16,7 +16,7 @@ public class DevelopersDao extends AbstractDao<Developers> {
     private static DevelopersDao  instance;
 
     private DevelopersDao() {
-        super(Developers.class);
+
     }
 
     public static DevelopersDao getInstance() {
@@ -32,11 +32,10 @@ public class DevelopersDao extends AbstractDao<Developers> {
         for (Projects project : entity.getProjects()) {
             project.getDevelopers().remove(entity);
         }
-        for (Skills skill : entity.getSkills()) {
-            skill.getDevelopers().remove(entity);
+        for (Skills skills : entity.getSkills()) {
+            skills.getDevelopers().remove(entity);
         }
         em.remove(entity);
         em.getTransaction().commit();
     }
-
 }

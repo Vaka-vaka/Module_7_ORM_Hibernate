@@ -18,7 +18,6 @@ public class DevelopersService {
     private static DevelopersService instance;
 
     private final DevelopersDao developersDao = DevelopersDao.getInstance();
-    CompaniesService companyDao = CompaniesService.getInstance();
 
     private DevelopersService() {
     }
@@ -31,13 +30,8 @@ public class DevelopersService {
     }
 
     public List<Developers> getAll() {
-        companyDao.getAll();
         return developersDao.getAll();
     }
-
-//    public List<Developers> getAll() {
-//        return developersDao.getAll();
-//    }
 
     public Optional<Developers> get(long id) {
         return developersDao.get(id);
@@ -55,11 +49,5 @@ public class DevelopersService {
         developersDao.delete(developers);
     }
 
-//    public List<Developers> developersOfIndustry(String industry) {
-//        return developersDao.developersOfIndustry(industry);
-//    }
-//
-//    public List<Developers> developersOfLevel(String level) {
-//        return developersDao.developersOfLevel(level);
-//    }
+
 }

@@ -43,6 +43,7 @@ public class ProjectsDao extends AbstractDao<Projects> {
         for (Customers customers : entity.getCustomers()) {
                 customers.getProjects().remove(entity);
         }
+
         em.remove(entity);
         em.getTransaction().commit();
     }

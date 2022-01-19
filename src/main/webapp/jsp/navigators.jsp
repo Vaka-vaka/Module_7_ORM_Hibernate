@@ -28,22 +28,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/customersJSP">Customers</a>
                 </li>
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                   Home Work Module 4
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-
-                    <li><a class="dropdown-item" href="/salaryJSP">Report 1 "Salary (sum) of all developers of a single project"</a></li>
-                    <li><a class="dropdown-item" href="/developersIndividualProjectJSP">Report 2 "List of developers of an individual project"</a></li>
-                     <li><a class="dropdown-item" href="/javaDevelopersJSP">Report 3 "A list of all Java developers"</a></li>
-                     <li><a class="dropdown-item" href="/middleDevelopersJSP">Report 4 "A list of all Middle developers"</a></li>
-                     <li><a class="dropdown-item" href="/listProjectsJSP">Report 5
-                     "A list of projects in the following format: date of creation - project name - number of developers on this project"</a></li>
-                  </ul>
-                </li>
-
             </ul>
         </div>
     </div>

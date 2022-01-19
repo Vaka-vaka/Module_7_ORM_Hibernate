@@ -27,12 +27,5 @@ public class LoadListener implements ServletContextListener {
         servletContext.setAttribute("projectsService", ProjectsService.getInstance());
         servletContext.setAttribute("companiesService", CompaniesService.getInstance());
         servletContext.setAttribute("customersService", CustomersService.getInstance());
-//        servletContext.setAttribute("skillDao", SkillsService.getInstance());
-//        servletContext.setAttribute("salaryService", SalaryService.getInstance());
-//        servletContext.setAttribute("developersIndividualProjectService",
-//                DevelopersIndividualProjectService.getInstance());
-//        servletContext.setAttribute("javaDevelopersService", JavaDevelopersService.getInstance());
-//        servletContext.setAttribute("middleDevelopersService", MiddleDevelopersService.getInstance());
-//        servletContext.setAttribute("listProjectsService", ListProjectsService.getInstance());
     }
 }
