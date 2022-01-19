@@ -7,6 +7,9 @@
 
 package ua.goit.dao;
 
+import ua.goit.model.Companies;
+import ua.goit.model.Customers;
+import ua.goit.model.Developers;
 import ua.goit.model.Projects;
 
 import javax.persistence.Tuple;
@@ -27,20 +30,20 @@ public class ProjectsDao extends AbstractDao<Projects> {
         return instance;
     }
 
-    public Map<String, Double> getSumProjectSalary(String projectName) {
-        Map<String, Double> projectDeveloper = em.createQuery("select p.name as project_name, sum(d.salary) as salary_sum" +
-                        " from Project p join p.developers d  GROUP BY p.name", Tuple.class)
-                .getResultList()
-                .stream()
-                .collect(
-                        Collectors.toMap(
-                                tuple -> ((String) tuple.get("project_name")),
-                                tuple -> (Double) tuple.get("salary_sum")
-                        )
-                );
-        Map<String, Double> sumProject = projectDeveloper.entrySet().stream()
-                .filter(m -> m.getKey().equals(projectName))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        return sumProject;
+    @Override
+    public void delete(Projects entity) {
+        entity = em.merge(entity);
+        em.getTransaction().begin();
+        for (Developers developers : entity.getDevelopers()) {
+                developers.getProjects().remove(entity);
+            }
+        for (Companies companies : entity.getCompanies()) {
+                companies.getProjects().remove(entity);
+        }
+        for (Customers customers : entity.getCustomers()) {
+                customers.getProjects().remove(entity);
+        }
+        em.remove(entity);
+        em.getTransaction().commit();
     }
 }

@@ -55,11 +55,11 @@ public class DevelopersService {
         developersDao.delete(developers);
     }
 
-    public List<Developers> developersOfIndustry(String industry) {
-        return developersDao.developersOfIndustry(industry);
-    }
-
-    public List<Developers> developersOfLevel(String level) {
-        return developersDao.developersOfLevel(level);
-    }
+//    public List<Developers> developersOfIndustry(String industry) {
+//        return developersDao.developersOfIndustry(industry);
+//    }
+//
+//    public List<Developers> developersOfLevel(String level) {
+//        return developersDao.developersOfLevel(level);
+//    }
 }

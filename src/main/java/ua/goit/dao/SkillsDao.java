@@ -37,5 +37,4 @@ public class SkillsDao extends AbstractDao<Skills> {
         em.remove(entity);
         em.getTransaction().commit();
     }
-
 }

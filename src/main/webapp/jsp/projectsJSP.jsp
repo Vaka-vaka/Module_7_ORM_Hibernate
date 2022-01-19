@@ -48,7 +48,8 @@
                  <td><%= projects.getName_() %></td>
                  <td><%= projects.getLanguage() %></td>
                  <td><%= projects.getCost() %></td>
-                 <td><%= projects.getCreation_date() %></td>
+                 <td><%=projects.getCreation_date() %></td>
+
              <td>
                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                    <div class="btn-group me-2" role="group" aria-label="Second group">

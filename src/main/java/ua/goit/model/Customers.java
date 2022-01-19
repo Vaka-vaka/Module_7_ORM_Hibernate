@@ -22,7 +22,7 @@ public class Customers implements Identity {
 
     @Id
     @GeneratedValue(generator = "customers_id_seq")
-    private long id;
+    private Long id;
     @Column(name = "name_")
     @SerializedName("name_")
     private String name_;

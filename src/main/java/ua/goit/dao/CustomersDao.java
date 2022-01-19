@@ -7,13 +7,11 @@
 
 package ua.goit.dao;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ua.goit.model.Customers;
+import ua.goit.model.Projects;
 
 public class CustomersDao extends AbstractDao<Customers> {
 
-    private static final Logger LOGGER = LogManager.getLogger(CustomersDao.class);
     private static CustomersDao  instance;
 
     private CustomersDao() {
@@ -26,5 +24,15 @@ public class CustomersDao extends AbstractDao<Customers> {
         return instance;
     }
 
+    @Override
+    public void delete(Customers entity) {
+        entity = em.merge(entity);
+        em.getTransaction().begin();
+        for (Projects projects : entity.getProjects()) {
+                projects.getCustomers().remove(entity);
+        }
+        em.remove(entity);
+        em.getTransaction().commit();
+    }
 }
 

@@ -8,7 +8,6 @@
 package ua.goit.dao;
 
 import ua.goit.model.Companies;
-import ua.goit.model.Developers;
 import ua.goit.model.Projects;
 
 public class CompaniesDao extends AbstractDao<Companies>{
@@ -26,5 +25,14 @@ public class CompaniesDao extends AbstractDao<Companies>{
         return instance;
     }
 
-
+    @Override
+    public void delete(Companies entity) {
+        entity = em.merge(entity);
+        em.getTransaction().begin();
+        for (Projects project : entity.getProjects()) {
+                project.getCompanies().remove(entity);
+        }
+        em.remove(entity);
+        em.getTransaction().commit();
+    }
 }

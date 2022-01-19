@@ -51,8 +51,8 @@ public class ProjectsService {
         projectsDao.delete(projects);
     }
 
-    public Map<String, Double> getSumProjectSalary(String projectName) {
-        return projectsDao.getSumProjectSalary(projectName);
-    }
+//    public Map<String, Double> getSumProjectSalary(String projectName) {
+//        return projectsDao.getSumProjectSalary(projectName);
+//    }
 
 }

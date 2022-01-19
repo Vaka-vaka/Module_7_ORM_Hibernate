@@ -24,7 +24,7 @@ public class Companies implements Identity {
     @Id
     @GeneratedValue(generator = "companies_id_seq")
     @SerializedName("id")
-    private long id;
+    private Long id;
     @Column(name = "name_")
     @SerializedName("name_")
     private String name_;
