@@ -28,4 +28,6 @@ public class LoadListener implements ServletContextListener {
         servletContext.setAttribute("companiesService", CompaniesService.getInstance());
         servletContext.setAttribute("customersService", CustomersService.getInstance());
     }
+
+
 }
