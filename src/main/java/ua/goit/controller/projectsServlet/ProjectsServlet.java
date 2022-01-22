@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @WebServlet("/projectsJSP")
-public class ProjectsServlet extends HttpServlet {
+public class ProjectsServlet extends HttpServlet{
 
     private ProjectsService service;
 

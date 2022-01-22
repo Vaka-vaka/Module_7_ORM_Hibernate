@@ -7,21 +7,21 @@
 
 package ua.goit.controller.skillsServlet;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import ua.goit.model.Skills;
 import ua.goit.service.HandleBodyUtil;
 import ua.goit.service.SkillsService;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 @WebServlet("/skillsJSP")
-public class SkillsServlet extends HttpServlet {
+public class SkillsServlet extends HttpServlet{
 
     private SkillsService service;
 
